@@ -18,4 +18,4 @@
 
 # 🛠️ Abrir e rodar o projeto
 
-Para rodar o projeto, [acesse aqui]().
+Para rodar o projeto, [acesse aqui](https://creative-sunshine-9c1597.netlify.app).
