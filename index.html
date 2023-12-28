@@ -11,45 +11,35 @@
         <div id="order-confirmation-message" style="display: none;">
             <p>Seu pedido está a caminho!</p>
         </div>
-
-        <div id="initial-message">
+        <div id="initial-message" class="message-box">
+            <h2>Bem-vindo ao nosso Restaurante!</h2>
             <p>Deseja um cardápio físico?</p>
-            <button onclick="showPhysicalMenu()">Sim</button>
-            <button onclick="showVirtualMenu()">Não</button>
+            <div class="button-container">
+                <button onclick="showPhysicalMenu()">Sim</button>
+                <button onclick="showVirtualMenu()">Não</button>
+            </div>
         </div>
-
-        <div id="physical-menu-message" style="display: none;">
-            <p>O cardápio físico já está a caminho!</p>
-        </div>
-
         <div id="virtual-menu" style="display: none;">
             <div id="food-menu">
                 <h2>Comidas</h2>
                 <div id="food-options"></div>
             </div>
-            
             <div id="drink-menu">
                 <h2>Bebidas</h2>
                 <div id="drink-options"></div>
             </div>
-        
             <div id="dessert-menu">
                 <h2>Sobremesas</h2>
                 <div id="dessert-options"></div>
             </div>
-        
             <div id="user-selection" style="display: flex;">
                 <div id="selected-items"></div>
                 <p><span id="total-price"></span></p>
                 <button id="finalize-order-btn" onclick="finalizeOrder()">Finalizar Pedido</button>
             </div>
-        </div>  
-        
-        <div class="footer">
-            <p>AUTOR: GUILHERME SACILOTTO</p>
         </div>
-        
-        <script src="script.js"></script>
-        
-    </body>
-    </html>
+    </div>
+    <footer>&copy; 2023 To do. Todos os direitos reservados.</footer>
+    <script src="script.js"></script>
+</body>
+</html>
