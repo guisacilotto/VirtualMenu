@@ -12,6 +12,22 @@ body {
     justify-content: center;
 }
 
+.button-container button {
+    margin: 0 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #2980b9;
+}
+
 .dialog-container {
     position: fixed;
     top: 50%;
@@ -229,15 +245,6 @@ li {
     font-size: 16px;
 }
 
-.footer {
-    text-align: right;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    font-size: calc(1vw + 1px);
-  }
-
   .notification {
     position: fixed;
     top: 10px;
@@ -294,4 +301,13 @@ li {
 
 .selected-list li button.remove-button {
     margin-left: 10px;
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
 }
