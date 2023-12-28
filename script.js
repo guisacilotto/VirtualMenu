@@ -17,12 +17,21 @@ const menuItems = {
     ]
 };
 
-
 const selections = {
     foods: [],
     desserts: [],
     drinks: []
 };
+
+function updatePricesWithMargin(marginPercent) {
+    for (const category in menuItems) {
+        menuItems[category].forEach(item => {
+            item.price += item.price * marginPercent / 100;
+        });
+    }
+}
+
+updatePricesWithMargin(10);
 
 function showPhysicalMenu() {
     document.getElementById("initial-message").style.display = "none";
@@ -108,34 +117,45 @@ function selectItem(category, item) {
     quantityInput.placeholder = "Quantidade";
     quantityInput.type = "number";
     quantityInput.min = "1";
+    quantityInput.max = "50";
     dialogContainer.appendChild(quantityInput);
+
+    const errorMessage = document.createElement("span");
+    errorMessage.style.color = "red";
+    errorMessage.style.display = "none";
+    dialogContainer.appendChild(errorMessage);
 
     const observationInput = document.createElement("textarea");
     observationInput.placeholder = "Observação";
     observationInput.rows = "4";
     dialogContainer.appendChild(observationInput);
 
+    quantityInput.oninput = function() {
+        const value = parseInt(quantityInput.value);
+        if (isNaN(value) || value < 1 || value > 50) {
+            errorMessage.textContent = "Quantidade Inválida";
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
+    };
+
     const okButton = document.createElement("button");
     okButton.textContent = "OK";
     okButton.onclick = () => {
-        const quantity = quantityInput.value;
-
-        if (quantity !== "" && !isNaN(quantity) && parseInt(quantity) > 0) {
-            const selectedItem = { ...item, quantity: parseInt(quantity) };
-
-            const observation = observationInput.value.trim();
-            if (observation) {
-                selectedItem.observation = observation;
-            }
-
+        const quantity = parseInt(quantityInput.value);
+        if (!isNaN(quantity) && quantity >= 1 && quantity <= 50) {
+            const selectedItem = { ...item, quantity };
             selections[category].push(selectedItem);
             updateSelectedItems();
             document.body.removeChild(dialogContainer);
         } else {
-            alert('Quantidade inválida. Tente novamente.');
+            errorMessage.textContent = "Quantidade Inválida";
+            errorMessage.style.display = "block";
         }
     };
     dialogContainer.appendChild(okButton);
+
 
     const cancelButton = document.createElement("button");
     cancelButton.textContent = "Cancelar";
